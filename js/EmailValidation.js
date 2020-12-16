@@ -14,9 +14,9 @@ const doubleCheckEmailAddress = function () {
         removeErrors(email);
     } else {
         if (isEmpty(email.input.value)) {
-            email.errorMessage.innerText = 'The input field is required';
+            email.errorMessage.innerText = 'The input field is required.';
         } else {
-            email.errorMessage.innerText = 'Invalid Email';
+            email.errorMessage.innerText = 'Invalid Email.';
         }
     }
 };
@@ -43,7 +43,7 @@ const getDOMElements = function () {
 const enableListeners = function () {
     email.input.addEventListener('blur', function () {
         if (!isValidEmailAddress(email.input.value)) {
-            email.errorMessage.innerText = isEmpty(email.input.value) ? 'The input field is required' : 'Invalid Email';
+            email.errorMessage.innerText = isEmpty(email.input.value) ? 'The input field is required.' : 'Invalid Email.';
             addErrors(email);
             email.input.addEventListener('input', doubleCheckEmailAddress);
         }
