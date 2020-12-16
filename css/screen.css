@@ -218,7 +218,6 @@ a,
 a:visited {
     transition: all var(--global-transitionTiming-alpha);
     color: var(--global-color-alpha);
-    outline-color: var(--global-link-BoxShadowColor);
     outline-width: medium;
     outline-offset: 2px;
 }
@@ -270,10 +269,6 @@ input::placeholder {
 }
 
 @media (min-width: 992px) {
-    .o-row--xl {
-        padding-top: 96px;
-        padding-bottom: var(--global-whitespace-xxl);
-    }
 }
 
 /*
@@ -295,10 +290,6 @@ input::placeholder {
     Creates vertical whitespace between adjacent sections inside a row
 */
 
-.o-section + .o-section {
-    padding-top: var(--global-whitespace);
-}
-
 @media (min-width: 768px) {
 }
 
@@ -313,31 +304,7 @@ input::placeholder {
     with width utilities
 */
 
-.o-layout__item {
-    width: 100%;
-}
-
 /* gutter modifiers, these affect o-layout__item too */
-
-.o-layout--gutter {
-    margin: 0 -12px;
-}
-
-.o-layout--gutter > .o-layout__item {
-    padding: 0 calc(var(--global-whitespace) / 2);
-}
-
-.o-layout--gutter-sm > .o-layout__item {
-    padding: 0 6px;
-}
-
-.o-layout--gutter-lg > .o-layout__item {
-    padding: 0 24px;
-}
-
-.o-layout--gutter-xl > .o-layout__item {
-    padding: 0 var(--global-whitespace-xl);
-}
 
 /* reverse horizontal row modifier */
 
@@ -347,28 +314,11 @@ input::placeholder {
 
 /* Vertical alignment modifiers that only work if there is one than one flex item */
 
-.o-layout--align-content-center {
-    align-content: center;
-}
-
-.o-layout--align-content-space-around {
-    align-content: space-around;
-}
-
-.o-layout--align-content-space-between {
-    align-content: space-between;
-}
-
 /*
     Objects: List
     ---
     Small reusable object to remove default list styling from lists
 */
-
-.o-list {
-    list-style: none;
-    padding: 0;
-}
 
 /*
     Object: Button reset
@@ -376,45 +326,11 @@ input::placeholder {
     Small button reset object
 */
 
-.o-button-reset {
-    border: none;
-    margin: 0;
-    padding: 0;
-    width: auto;
-    overflow: visible;
-    background: transparent;
-
-    /* inherit font & color from ancestor */
-    color: inherit;
-    font: inherit;
-
-    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-    line-height: normal;
-
-    /* Corrects font smoothing for webkit */
-    -webkit-font-smoothing: inherit;
-    -moz-osx-font-smoothing: inherit;
-
-    /* Corrects inability to style clickable `input` types in iOS */
-    -webkit-appearance: none;
-}
-
 /*
     Object: Hide accessible
     ---
     Accessibly hide any element
 */
-
-.o-hide-accessible {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
 
 /*------------------------------------*\
 #COMPONENTS
@@ -534,7 +450,6 @@ input::placeholder {
     line-height: calc(var(--global-baseline) * 3);
     padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
     outline: none;
-    transition: border var(--global-transition-timing-alpha), box-shadow var(--global-transition-timing-alpha);
 }
 
 .c-input:hover {
@@ -552,15 +467,7 @@ Input password with toggle checkbox on top of it needs
 more padding on the right to avoid overlap
 */
 
-.c-input--password-with-toggle {
-    padding-right: 52px;
-}
-
 /* option input for checkboxes and radio buttons */
-
-.c-option {
-    margin-right: var(--global-whitespace-sm);
-}
 
 /*
     Component: Label
@@ -569,7 +476,7 @@ more padding on the right to avoid overlap
 */
 
 .c-label {
-    --label-color: var(--global-color-neutral-xx-dark);
+    --label-color: black;
     margin-bottom: 0;
     padding-bottom: var(--global-whitespace-sm);
     line-height: 16px;
@@ -578,13 +485,13 @@ more padding on the right to avoid overlap
     justify-content: center;
     align-content: center;
 }
-.c-label__p{
-    margin: 0;
-    margin-right: var(--global-baseline);
+.c-label__emailError{
+    display: none;
 }
 
-.c-label--option {
-    padding-bottom: 0;
+/*noinspection CssUnusedSymbol*/
+.toggleVisibility{
+    display: flex;
 }
 
 
@@ -617,12 +524,12 @@ more padding on the right to avoid overlap
     padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
     width: 100%;
     outline: none;
-    box-shadow: var(--button-boxShadow, 0);
-    transition: all var(--global-transitionTiming-alpha) var(--global-transitionEasing-out);
     opacity: 100%;
     margin-bottom: var(--global-whitespace-lg);
     transition: all 0.5s;
 }
+
+/*noinspection ALL*/
 .c-button.text-animation{
     opacity:0;
 }
@@ -642,168 +549,11 @@ more padding on the right to avoid overlap
 .c-button:active {
     background-color: var(--button-active-backgroundColor);
     border-color: var(--button-active-borderColor);
-    box-shadow: var(--button-active-boxShadow, 0);
 }
 
-/*
-    Component: Option list
-*/
-
-.c-option-list {
-    margin-bottom: var(--global-whitespace);
-}
-
-.c-option-list__item {
-    margin-bottom: calc(var(--global-whitespace) / 2);
-}
-
-/*
-    Custom option
-    ---
-    Custom checkboxes & radio buttons
-*/
-
-/* Hide the actual input with the class .o-hide-accessible */
-
-.c-custom-option {
-    --custom-option__symbol-Fill: var(--global-color-alpha);
-    display: flex;
-    align-items: center;
-}
-
-.c-custom-option__fake-input {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--global-whitespace-md);
-    height: var(--global-whitespace-md);
-    margin-right: var(--global-whitespace-sm);
-    background: var(--global-input-backgroundColor);
-    border: var(--global-borderWidth) solid var(--custom-option-borderColor, var(--global-input-borderColor));
-    box-shadow: var(--custom-option-boxShadow, 0);
-    transition: border var(--global-transitionTiming-alpha), box-shadow var(--global-transitionTiming-alpha);
-}
-
-.c-custom-option__fake-input--checkbox {
-    border-radius: var(--global-borderRadius);
-}
-
-.c-custom-option__fake-input--radio {
-    border-radius: 100%;
-}
-
-.c-custom-option__symbol {
-    display: block;
-    opacity: 0; /* Hide the symbol initially */
-    transform: scale(.5);
-    transition: transform var(--global-transitionTiming-alpha), opacity var(--global-transitionTiming-alpha);
-}
-
-.c-custom-option__fake-input--checkbox .c-custom-option__symbol {
-    width: 10px;
-    height: 10px;
-    fill: var(--custom-option__symbol-Fill);
-}
-
-.c-custom-option__fake-input--radio .c-custom-option__symbol {
-    background-color: var(--custom-option__symbol-Fill);
-    border-radius: 100%;
-    width: 6px;
-    height: 6px;
-}
-
-/* hover state */
-
-.c-custom-option:hover {
-    --custom-option-borderColor: var(--global-input-hover-borderColor);
-}
-
-/* focused and active state */
-
-.c-option--hidden:focus + .c-custom-option,
-.c-option--hidden:active + .c-custom-option {
-    --custom-option-borderColor: var(--global-input-focus-borderColor);
-    --custom-option-boxShadow: var(--global-input-focus-boxShadow);
-}
-
-/* checked state */
-
-.c-option--hidden:checked + .c-custom-option .c-custom-option__symbol {
-    opacity: 1; /* Show the symbol when the invisible checkbox/radio button is checked */
-    transform: scale(1);
-}
-
-/*
-    Component: Custom Toggle
-    ---
-    Visually change a checkbox into a toggle
-*/
-
-.c-custom-toggle-list {
-    --toggle-list-borderColor: var(--global-color-neutral-xxx-light);
-    margin-bottom: var(--global-whitespace);
-}
-
-.c-custom-toggle-list__item {
-    margin-bottom: calc(var(--global-whitespace) / 2);
-}
-
-.c-custom-toggle {
-    --toggle-backgroundColor: var(--global-color-neutral-xxxx-light);
-    --toggle-checked-borderColor: var(--global-color-alpha-dark);
-    --toggle-checked-backgroundColor: var(--global-color-alpha);
-    --toggle-focus-boxShadow: var(--global-input-focus-boxShadow);
-    --toggle__switch-backgroundColor: White;
-    --toggle__switch-checked-backgroundColor: White;
-    --toggle__switch-transition: all var(--global-transitionTiming-alpha);
-    display: flex;
-    align-items: center;
-}
-
-.c-custom-toggle--inverted {
-    flex-direction: row-reverse;
-    justify-content: space-between;
-}
-
-/* focused and active state */
-
-.c-option--hidden:focus + .c-custom-toggle,
-.c-option--hidden:active + .c-custom-toggle {
-    --toggle-borderColor: var(--global-input-focus-borderColor);
-    --toggle-boxShadow: var(--toggle-focus-boxShadow);
-}
-
-/* checked state */
-
-.c-option--hidden:checked + .c-custom-toggle {
-    --toggle-backgroundColor: var(--toggle-checked-backgroundColor);
-    --toggle-borderColor: var(--toggle-checked-borderColor);
-    --toggle__switch-backgroundColor: var(--toggle__switch-checked-backgroundColor);
-}
-
-/* special active state */
-
-/*
-    Component: Custom Select
-    ---
-    Custom select dropdown
-*/
 
 
-.c-custom-select {
-    display: block;
-    position: relative;
-}
 
-.c-custom-select__symbol {
-    width: var(--global-whitespace);
-    height: var(--global-whitespace);
-    position: absolute;
-    top: calc(var(--global-whitespace) / 2);
-    right: calc(var(--global-whitespace) / 2);
-    pointer-events: none;
-    fill: var(--global-color-neutral-x-light);
-}
 
 /*
     Component: Javascript
